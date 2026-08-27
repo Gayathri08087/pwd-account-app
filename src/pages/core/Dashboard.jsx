@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import useStore from "../store/useStore";
-import { STORAGE_KEYS } from "../utils/constants";
-import { formatCurrency, calculateTotal } from "../utils/dataFormat";
+import useStore from "../../store/useStore";
+import { STORAGE_KEYS } from "../../utils/constants";
+import { formatCurrency, calculateTotal } from "../../utils/dataFormat";
 
 const todayLabel = () =>
   new Date().toLocaleDateString("en-IN", {

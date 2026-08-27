@@ -6,15 +6,7 @@ import { calculateTotal, formatCurrency } from "../../utils/dataFormat";
 
 const todayInputDate = () => new Date().toISOString().slice(0, 10);
 
-const UNITS = [
-  "Nos", "Kg", "g", "Ton",
-  "m", "cm", "mm",
-  "m²", "ft²",
-  "m³", "ft³",
-  "L", "mL",
-  "Bag", "Bundle", "Box", "Roll", "Sheet", "Set", "Pair",
-  "Trip", "Load", "Day", "Hour",
-];
+const UNITS = ["Nos", "Kg", "Units", "Bag"];
 
 const initialRecord = {
   project: "",
@@ -473,7 +465,7 @@ export default function WorkManagement() {
         ) : (
           <div style={{ marginTop: "1.5rem", display: "flex", flexDirection: "column", gap: "1rem" }}>
             {Object.entries(groupedRecords).map(([projKey, projRecords]) => {
-              const isOpen = expandedProjects[projKey] !== false; // default open
+              const isOpen = expandedProjects[projKey] === true; // default closed
               const projTotal = projRecords.reduce((s, r) => s + Number(r.totalAmount || 0), 0);
               const projPaid = projRecords.reduce((s, r) => s + Number(r.paidAmount || 0), 0);
               const projRemaining = Math.max(projTotal - projPaid, 0);

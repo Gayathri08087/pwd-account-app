@@ -3,9 +3,12 @@ import useStore from "../../store/useStore";
 import ConfirmDialog from "../../components/ConfirmDialog";
 import { formatCurrency } from "../../utils/dataFormat";
 
+const todayDate = () => new Date().toISOString().slice(0, 10);
+
 const initialForm = {
   item: "",
   amount: "",
+  date: todayDate(),
 };
 
 export default function HomeExpense() {
@@ -18,7 +21,7 @@ export default function HomeExpense() {
     if (!form.item.trim() || !form.amount) return;
     setDialog({
       open: true,
-      payload: { item: form.item.trim(), amount: Number(form.amount) },
+      payload: { item: form.item.trim(), amount: Number(form.amount), date: form.date },
     });
   };
 
@@ -38,6 +41,15 @@ export default function HomeExpense() {
       </header>
 
       <form className="form-panel" onSubmit={save}>
+        <label className="field">
+          <span>Date</span>
+          <input
+            type="date"
+            value={form.date}
+            onChange={(event) => setForm({ ...form, date: event.target.value })}
+          />
+        </label>
+
         <label className="field">
           <span>Expense Item</span>
           <input
@@ -67,7 +79,7 @@ export default function HomeExpense() {
         ) : (
           expenses.map((expense, index) => (
             <article key={`${expense.item}-${index}`} className="card record-card">
-              <span>Home</span>
+              <span>{expense.date ?? ""}</span>
               <h2>{expense.item}</h2>
               <p>{formatCurrency(expense.amount)}</p>
             </article>

@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import { useAuthStore } from "./store/authStore";
 import Sidebar from "./components/Sidebar";
 import AppRoutes from "./routes/AppRoutes";
-import Login from "./pages/Login";
+import FloatingObjects from "./components/FloatingObjects";
+import Login from "./pages/core/Login";
 
 function App() {
   const { user, loading, init } = useAuthStore();
@@ -22,6 +23,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <FloatingObjects />
       {user ? (
         <div className="layout">
           <Sidebar />
