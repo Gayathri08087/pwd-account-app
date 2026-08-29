@@ -8,6 +8,7 @@ import MonthlyReport from "../pages/reports/MonthlyReport";
 import PendingPayments from "../pages/reports/PendingPayments";
 import ProjectEstimation from "../pages/accounts/ProjectEstimation";
 import WorkManagement from "../pages/accounts/WorkManagement";
+import Settings from "../pages/core/Settings";
 
 export default function AppRoutes() {
   const location = useLocation();
@@ -28,6 +29,7 @@ export default function AppRoutes() {
         <Route path="/balance" element={<PageTransition><BalanceSheet /></PageTransition>} />
         <Route path="/monthly" element={<PageTransition><MonthlyReport /></PageTransition>} />
         <Route path="/pending" element={<PageTransition><PendingPayments /></PageTransition>} />
+        <Route path="/settings" element={<PageTransition><Settings /></PageTransition>} />
       </Routes>
     </AnimatePresence>
   );

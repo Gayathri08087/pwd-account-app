@@ -25,6 +25,12 @@ const navGroups = [
       { to: "/pending", label: "Pending Payments", icon: "⏳" },
     ],
   },
+  {
+    title: "Preferences",
+    links: [
+      { to: "/settings", label: "Settings", icon: "⚙️" },
+    ],
+  },
 ];
 
 export default function Sidebar() {

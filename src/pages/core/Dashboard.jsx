@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useStore from "../../store/useStore";
 import { STORAGE_KEYS } from "../../utils/constants";
@@ -60,6 +61,13 @@ export default function Dashboard() {
   const [workRecords] = useStore(STORAGE_KEYS.WORK_RECORDS, []);
   const [projects] = useStore("pwd_project_estimations", []);
   const [homeExpenses] = useStore("home", []);
+  
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   const workTotal = calculateTotal(workRecords, "totalAmount");
   const workPaid = calculateTotal(workRecords, "paidAmount");
@@ -78,7 +86,9 @@ export default function Dashboard() {
         </p>
         <h2>Welcome back 👋</h2>
         <p>Your accounts are up to date. Here's a quick overview of today's status.</p>
-        <span className="welcome-date-badge">📅 {todayLabel()}</span>
+        <span className="welcome-date-badge">
+          📅 {todayLabel()} • ⏰ {currentTime.toLocaleTimeString("en-IN", { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+        </span>
       </div>
 
       {/* Summary metric cards */}

@@ -80,6 +80,35 @@
   -webkit-font-smoothing: antialiased;
 }
 
+/* ---------- Dark Theme Overrides ---------- */
+.dark-theme {
+  /* Surfaces */
+  --surface: var(--navy-900);
+  --surface-soft: var(--navy-800);
+  --surface-muted: #111a2c;
+  --surface-strong: var(--navy-950);
+
+  /* Borders */
+  --border: rgba(255, 255, 255, 0.1);
+  --border-soft: rgba(255, 255, 255, 0.05);
+  --border-strong: rgba(255, 255, 255, 0.2);
+
+  /* Text */
+  --text: #e2e8f0;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --muted: #64748b;
+
+  /* Shadows */
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+
+  /* Sidebar */
+  --sidebar-bg: var(--navy-950);
+}
+
 /* ---------- Reset ---------- */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -98,6 +127,10 @@ body {
   color: var(--text);
   font-size: 15px;
   line-height: 1.6;
+}
+
+body.dark-theme {
+  background: linear-gradient(-45deg, #0b1220, #0f1a2e, #162035, #0b1220);
 }
 
 @keyframes gradientFlow {

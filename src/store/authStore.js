@@ -5,7 +5,9 @@ import {
   signOut, 
   signInWithEmailAndPassword, 
   createUserWithEmailAndPassword, 
-  sendPasswordResetEmail 
+  sendPasswordResetEmail,
+  updateProfile,
+  updateEmail
 } from 'firebase/auth';
 import { auth, googleProvider } from '../config/firebase';
 
@@ -55,6 +57,29 @@ export const useAuthStore = create((set) => ({
       await sendPasswordResetEmail(auth, email);
     } catch (error) {
       console.error("Password Reset Error:", error);
+      throw error;
+    }
+  },
+
+  updateUserProfile: async (profileData) => {
+    try {
+      if (!auth.currentUser) throw new Error("No user logged in");
+      await updateProfile(auth.currentUser, profileData);
+      // Force update state
+      set({ user: { ...auth.currentUser } });
+    } catch (error) {
+      console.error("Update Profile Error:", error);
+      throw error;
+    }
+  },
+
+  updateUserEmail: async (newEmail) => {
+    try {
+      if (!auth.currentUser) throw new Error("No user logged in");
+      await updateEmail(auth.currentUser, newEmail);
+      set({ user: { ...auth.currentUser } });
+    } catch (error) {
+      console.error("Update Email Error:", error);
       throw error;
     }
   },

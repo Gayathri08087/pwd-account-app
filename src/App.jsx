@@ -11,7 +11,26 @@ function App() {
 
   useEffect(() => {
     init();
+    
+    // Initialize theme globally on app load
+    const savedTheme = localStorage.getItem("pwd_app_theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+      document.body.classList.add("dark-theme");
+    } else {
+      document.body.classList.remove("dark-theme");
+    }
   }, [init]);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("pwd_app_theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+      document.body.classList.add("dark-theme");
+    } else {
+      document.body.classList.remove("dark-theme");
+    }
+  }, []);
 
   if (loading) {
     return (
