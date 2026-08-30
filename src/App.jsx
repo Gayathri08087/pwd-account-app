@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useAuthStore } from "./store/authStore";
 import Sidebar from "./components/Sidebar";
 import AppRoutes from "./routes/AppRoutes";
+import Header from "./components/Header";
 import FloatingObjects from "./components/FloatingObjects";
 import Login from "./pages/core/Login";
 
@@ -47,6 +48,7 @@ function App() {
         <div className="layout">
           <Sidebar />
           <main className="app-main">
+            <Header />
             <AppRoutes />
           </main>
         </div>

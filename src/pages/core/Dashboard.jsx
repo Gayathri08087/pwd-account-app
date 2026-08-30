@@ -4,13 +4,7 @@ import useStore from "../../store/useStore";
 import { STORAGE_KEYS } from "../../utils/constants";
 import { formatCurrency, calculateTotal } from "../../utils/dataFormat";
 
-const todayLabel = () =>
-  new Date().toLocaleDateString("en-IN", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+
 
 const quickLinks = [
   {
@@ -62,12 +56,6 @@ export default function Dashboard() {
   const [projects] = useStore("pwd_project_estimations", []);
   const [homeExpenses] = useStore("home", []);
   
-  const [currentTime, setCurrentTime] = useState(new Date());
-
-  useEffect(() => {
-    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
-    return () => clearInterval(timer);
-  }, []);
 
   const workTotal = calculateTotal(workRecords, "totalAmount");
   const workPaid = calculateTotal(workRecords, "paidAmount");
@@ -79,17 +67,7 @@ export default function Dashboard() {
 
   return (
     <div className="page">
-      {/* Welcome banner */}
-      <div className="welcome-banner">
-        <p style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", opacity: 0.6, marginBottom: 8 }}>
-          Public Works Department
-        </p>
-        <h2>Welcome back 👋</h2>
-        <p>Your accounts are up to date. Here's a quick overview of today's status.</p>
-        <span className="welcome-date-badge">
-          📅 {todayLabel()} • ⏰ {currentTime.toLocaleTimeString("en-IN", { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
-        </span>
-      </div>
+
 
       {/* Summary metric cards */}
       <section className="stats-grid">

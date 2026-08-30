@@ -26,11 +26,9 @@ const navGroups = [
     ],
   },
   {
-    title: "Reports",
+    title: "System",
     links: [
-      { to: "/balance", label: "Balance Sheet", icon: "⚖️" },
-      { to: "/monthly", label: "Monthly Report", icon: "📅" },
-      { to: "/pending", label: "Pending Payments", icon: "⏳" },
+      { to: "/settings", label: "Settings", icon: "⚙️" },
     ],
   },
 ];
@@ -43,9 +41,13 @@ export default function Sidebar() {
     <aside className="sidebar">
       <div className="sidebar-top">
         <div className="brand">
-          <span className="brand-mark">PWD</span>
-          <div>
-            <h1>PWD Manager</h1>
+          {user?.photoURL ? (
+            <img src={user.photoURL} alt="Avatar" className="brand-mark" style={{ background: 'transparent', padding: 0, objectFit: 'cover' }} />
+          ) : (
+            <span className="brand-mark">{user?.displayName?.charAt(0) || 'U'}</span>
+          )}
+          <div style={{ overflow: 'hidden' }}>
+            <h1 style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{user?.displayName || 'User'}</h1>
             <p>Accounts Dashboard</p>
           </div>
         </div>
@@ -86,103 +88,7 @@ export default function Sidebar() {
           </section>
         ))}
 
-        {/* Mobile-only: user info + logout at bottom of nav menu */}
-        <div className="mobile-user-footer">
-          <div className="sidebar-divider" style={{ margin: '8px 0' }} />
-          <div className="mobile-user-row">
-            <div className="mobile-user-info">
-              {user?.photoURL ? (
-                <img src={user.photoURL} alt="Avatar" className="mobile-avatar-img" />
-              ) : (
-                <div className="user-avatar">{user?.displayName?.charAt(0) || 'U'}</div>
-              )}
-              <div className="user-card-info">
-                <div className="user-card-name">{user?.displayName || 'User'}</div>
-                <div className="user-card-role">{user?.email || 'Logged in'}</div>
-              </div>
-            </div>
-            <div style={{ display: 'flex', gap: '8px' }}>
-              <NavLink
-                to="/settings"
-                onClick={() => setIsMenuOpen(false)}
-                style={{
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  minHeight: '36px', padding: '0 10px',
-                  background: 'rgba(255,255,255,0.08)', color: '#cbd5e1',
-                  borderRadius: 'var(--radius-md)'
-                }}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="3"></circle>
-                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                </svg>
-              </NavLink>
-              <button
-                onClick={logout}
-                className="mobile-logout-btn"
-                title="Log out"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                  <polyline points="16 17 21 12 16 7"></polyline>
-                  <line x1="21" y1="12" x2="9" y2="12"></line>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
       </nav>
-
-      <div className="sidebar-footer">
-        <div className="user-card" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.75rem', gap: '0.5rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', overflow: 'hidden' }}>
-            {user?.photoURL ? (
-              <img src={user.photoURL} alt="Avatar" style={{ width: '32px', height: '32px', borderRadius: '50%' }} />
-            ) : (
-              <div className="user-avatar">{user?.displayName?.charAt(0) || 'U'}</div>
-            )}
-            <div className="user-card-info" style={{ overflow: 'hidden' }}>
-              <div className="user-card-name" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{user?.displayName || 'User'}</div>
-              <div className="user-card-role" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontSize: '0.75rem' }}>{user?.email || 'Logged in'}</div>
-            </div>
-          </div>
-          <div style={{ display: 'flex', gap: '4px' }}>
-            <NavLink 
-              to="/settings"
-              title="Settings"
-              style={{
-                background: 'transparent', border: 'none', color: 'var(--text-secondary)',
-                cursor: 'pointer', padding: '0.25rem', display: 'flex', alignItems: 'center', justifyContent: 'center'
-              }}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-              </svg>
-            </NavLink>
-            <button 
-              onClick={logout}
-              title="Log out"
-              style={{
-                background: 'transparent',
-                border: 'none',
-                color: 'var(--text-secondary)',
-                cursor: 'pointer',
-                padding: '0.25rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                <polyline points="16 17 21 12 16 7"></polyline>
-                <line x1="21" y1="12" x2="9" y2="12"></line>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
     </aside>
   );
 }

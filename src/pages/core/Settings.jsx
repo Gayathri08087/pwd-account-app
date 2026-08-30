@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react";
 import { useAuthStore } from "../../store/authStore";
 
-// Predefined high-quality real human avatars from Pravatar
 const AVATAR_OPTIONS = [
-  "https://i.pravatar.cc/150?u=a042581f4e29026704d", // Man, dark hair, young
-  "https://i.pravatar.cc/150?u=a042581f4e29026024d", // Woman, light hair, young
-  "https://i.pravatar.cc/150?u=a04258114e29026702d", // Woman, dark skin, young
-  "https://i.pravatar.cc/150?u=a048581f4e29026701d", // Man, beard, older
-  "https://i.pravatar.cc/150?u=a04258a2462d826712d", // Man, dark skin, young
-  "https://i.pravatar.cc/150?u=a042581f4e29026704b", // Woman, older
-  "https://i.pravatar.cc/150?u=a042581f4e29026703d", // Man, light hair, young
-  "https://i.pravatar.cc/150?u=a042581f4e29026702c", // Woman, glasses, dark hair
+  "https://api.dicebear.com/7.x/bottts/svg?seed=Felix",
+  "https://api.dicebear.com/7.x/bottts/svg?seed=Aneka",
+  "https://api.dicebear.com/7.x/bottts/svg?seed=Mimi",
+  "https://api.dicebear.com/7.x/bottts/svg?seed=Jack",
+  "https://api.dicebear.com/7.x/bottts/svg?seed=Jasper",
+  "https://api.dicebear.com/7.x/bottts/svg?seed=Lucy",
+  "https://api.dicebear.com/7.x/bottts/svg?seed=Bailey",
+  "https://api.dicebear.com/7.x/bottts/svg?seed=Charlie",
 ];
 
 export default function Settings() {
@@ -95,7 +94,6 @@ export default function Settings() {
     <div className="page">
       <div className="page-header">
         <div>
-          <p className="eyebrow">Preferences</p>
           <h1>Settings</h1>
         </div>
       </div>
@@ -208,11 +206,7 @@ export default function Settings() {
           </div>
         </section>
 
-        {/* Danger Zone */}
-        <section className="form-panel" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gridTemplateColumns: "1fr", border: "1px solid rgba(244, 63, 94, 0.3)" }}>
-          <h2 style={{ fontSize: "1.05rem", fontWeight: 800, color: "var(--danger)" }}>Danger Zone</h2>
-          <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", marginBottom: "16px" }}>End your current session securely.</p>
-          
+        <section className="form-panel" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gridTemplateColumns: "1fr" }}>
           <button type="button" className="danger-button" onClick={logout} style={{ width: "100%", maxWidth: "300px" }}>
             Log Out
           </button>
