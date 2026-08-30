@@ -205,13 +205,6 @@ export default function Settings() {
             </button>
           </div>
         </section>
-
-        <section className="form-panel" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gridTemplateColumns: "1fr" }}>
-          <button type="button" className="danger-button" onClick={logout} style={{ width: "100%", maxWidth: "300px" }}>
-            Log Out
-          </button>
-        </section>
-
       </div>
     </div>
   );

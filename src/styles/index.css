@@ -182,7 +182,8 @@ p, h1, h2, h3, h4 {
 
 .layout {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
   position: relative;
   z-index: 1;
 }
@@ -191,6 +192,7 @@ p, h1, h2, h3, h4 {
   flex: 1;
   min-width: 0;
   padding: 32px 36px;
+  overflow-y: auto;
 }
 
 /* ============================================================
