@@ -2,18 +2,18 @@ import { useState, useEffect } from "react";
 import { useAuthStore } from "../../store/authStore";
 
 const AVATAR_OPTIONS = [
-  "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix",
-  "https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka",
-  "https://api.dicebear.com/7.x/avataaars/svg?seed=Mimi",
-  "https://api.dicebear.com/7.x/avataaars/svg?seed=Jack",
-  "https://api.dicebear.com/7.x/avataaars/svg?seed=Jasper",
-  "https://api.dicebear.com/7.x/avataaars/svg?seed=Lucy",
-  "https://api.dicebear.com/7.x/avataaars/svg?seed=Bailey",
-  "https://api.dicebear.com/7.x/avataaars/svg?seed=Charlie",
-  "https://api.dicebear.com/7.x/avataaars/svg?seed=Max",
-  "https://api.dicebear.com/7.x/avataaars/svg?seed=Sam",
-  "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex",
-  "https://api.dicebear.com/7.x/avataaars/svg?seed=Jordan",
+  "https://api.dicebear.com/7.x/adventurer/svg?seed=Felix",
+  "https://api.dicebear.com/7.x/adventurer/svg?seed=Aneka",
+  "https://api.dicebear.com/7.x/adventurer/svg?seed=Mimi",
+  "https://api.dicebear.com/7.x/adventurer/svg?seed=Jack",
+  "https://api.dicebear.com/7.x/adventurer/svg?seed=Jasper",
+  "https://api.dicebear.com/7.x/adventurer/svg?seed=Lucy",
+  "https://api.dicebear.com/7.x/adventurer/svg?seed=Bailey",
+  "https://api.dicebear.com/7.x/adventurer/svg?seed=Charlie",
+  "https://api.dicebear.com/7.x/adventurer/svg?seed=Max",
+  "https://api.dicebear.com/7.x/adventurer/svg?seed=Sam",
+  "https://api.dicebear.com/7.x/adventurer/svg?seed=Alex",
+  "https://api.dicebear.com/7.x/adventurer/svg?seed=Jordan",
 ];
 
 const SettingsRow = ({ icon, label, onClick }) => (
@@ -125,14 +125,14 @@ export default function Settings() {
           fontWeight: 600,
           fontSize: '0.85rem',
           marginBottom: '24px',
-          maxWidth: '600px',
+          maxWidth: '800px',
           margin: '0 auto 24px auto'
         }}>
           {message.text}
         </div>
       )}
 
-      <div style={{ maxWidth: '600px', margin: '0 auto', background: 'var(--surface)', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--border)' }}>
+      <div style={{ maxWidth: '800px', margin: '0 auto', background: 'var(--surface)', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--border)' }}>
          <div style={{ padding: '32px', textAlign: 'center', borderBottom: '1px solid var(--border)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <img src={user?.photoURL || AVATAR_OPTIONS[0]} alt="Profile" style={{ width: '90px', height: '90px', borderRadius: '50%', marginBottom: '16px', objectFit: 'cover' }} />
             <h2 style={{ fontSize: '1.2rem', marginBottom: '8px', fontWeight: 800 }}>{user?.displayName || 'Student Profile'}</h2>
