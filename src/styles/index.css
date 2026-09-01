@@ -96,8 +96,8 @@
   /* Text */
   --text: #e2e8f0;
   --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --muted: #64748b;
+  --text-secondary: #cbd5e1;
+  --muted: #94a3b8;
 
   /* Shadows */
   --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
@@ -794,9 +794,9 @@ input::placeholder {
 }
 
 .calculated-field input {
-  background: #f0fdf9;
-  border-color: #99f6e4;
-  color: var(--teal-600);
+  background: rgba(26, 173, 156, 0.05);
+  border-color: rgba(26, 173, 156, 0.4);
+  color: var(--teal-500);
   font-weight: 800;
 }
 
@@ -898,7 +898,7 @@ input::placeholder {
 
 .table-card {
   overflow: hidden;
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: 0 4px 20px rgba(30, 41, 59, 0.10), 0 0 0 1px rgba(226, 232, 240, 0.9);
@@ -923,7 +923,7 @@ thead {
 }
 
 th {
-  background: #f1f5f9;
+  background: var(--surface-muted);
   padding: 13px 18px;
   text-align: left;
   vertical-align: middle;
@@ -941,18 +941,18 @@ td {
   border-bottom: 1px solid var(--border-soft);
   text-align: left;
   vertical-align: middle;
-  background: #ffffff;
+  background: var(--surface);
   color: var(--text);
   font-size: 0.875rem;
   font-weight: 500;
 }
 
 tbody tr:nth-child(even) td {
-  background: #f8fafc;
+  background: var(--surface-soft);
 }
 
 tbody tr:hover td {
-  background: #f0fdf9;
+  background: rgba(26, 173, 156, 0.05);
 }
 
 tbody tr:last-child td {

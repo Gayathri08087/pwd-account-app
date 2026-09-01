@@ -82,130 +82,58 @@ export default function PendingPayments() {
             {[...new Set(pendingRows.map((r) => r.project))].length !== 1 ? "s" : ""}
           </p>
 
-          <div style={{ overflowX: "auto" }}>
-            <table
-              style={{
-                width: "100%",
-                borderCollapse: "collapse",
-                fontSize: "0.9rem",
-              }}
-            >
-              <thead>
-                <tr
-                  style={{
-                    background: "var(--surface-raised, rgba(255,255,255,0.05))",
-                    borderBottom: "2px solid var(--border)",
-                  }}
-                >
-                  {["Project", "Person Name", "Pending Amount", "No. of Records", "Latest Date"].map((col) => (
-                    <th
-                      key={col}
-                      style={{
-                        padding: "0.7rem 1rem",
-                        textAlign: col === "Pending Amount" ? "right" : "left",
-                        fontWeight: 700,
-                        color: "var(--text-secondary)",
-                        fontSize: "0.78rem",
-                        letterSpacing: "0.05em",
-                        textTransform: "uppercase",
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      {col}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {pendingRows.map((row, idx) => {
-                  // Shade alternating rows per project group
-                  return (
-                    <tr
-                      key={idx}
-                      style={{
-                        borderBottom: "1px solid var(--border)",
-                        background:
-                          idx % 2 === 0
-                            ? "transparent"
-                            : "var(--surface-raised, rgba(255,255,255,0.02))",
-                        transition: "background 0.15s",
-                      }}
-                    >
-                      <td
-                        style={{
-                          padding: "0.7rem 1rem",
-                          fontWeight: 600,
-                          color: "var(--text-primary)",
-                        }}
+          <div className="table-card">
+            <div className="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    {["Project", "Person Name", "Pending Amount", "No. of Records", "Latest Date"].map((col) => (
+                      <th
+                        key={col}
+                        style={{ textAlign: col === "Pending Amount" ? "right" : "left" }}
                       >
+                        {col}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {pendingRows.map((row, idx) => (
+                    <tr key={idx}>
+                      <td data-label="Project">
                         <span style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
                           <span>📁</span>
                           {row.project}
                         </span>
                       </td>
-                      <td style={{ padding: "0.7rem 1rem", color: "var(--text-primary)" }}>
+                      <td data-label="Person Name">
                         {row.personName}
                       </td>
-                      <td
-                        style={{
-                          padding: "0.7rem 1rem",
-                          textAlign: "right",
-                          fontWeight: 700,
-                          color: "var(--warning, #f59e0b)",
-                          fontSize: "0.95rem",
-                        }}
-                      >
+                      <td data-label="Pending Amount" style={{ textAlign: "right", color: "var(--warning)", fontWeight: 700, fontSize: "0.95rem" }}>
                         {formatCurrency(row.totalPending)}
                       </td>
-                      <td
-                        style={{
-                          padding: "0.7rem 1rem",
-                          textAlign: "left",
-                          color: "var(--text-secondary)",
-                          fontSize: "0.85rem",
-                        }}
-                      >
+                      <td data-label="No. of Records">
                         {row.recordCount} record{row.recordCount !== 1 ? "s" : ""}
                       </td>
-                      <td
-                        style={{
-                          padding: "0.7rem 1rem",
-                          color: "var(--text-secondary)",
-                          fontSize: "0.85rem",
-                        }}
-                      >
+                      <td data-label="Latest Date">
                         {displayDate(row.latestDate)}
                       </td>
                     </tr>
-                  );
-                })}
+                  ))}
 
-                {/* Grand total footer row */}
-                <tr
-                  style={{
-                    borderTop: "2px solid var(--border)",
-                    background: "var(--surface-raised, rgba(255,255,255,0.05))",
-                    fontWeight: 700,
-                  }}
-                >
-                  <td colSpan={2} style={{ padding: "0.75rem 1rem", color: "var(--text-primary)" }}>
-                    Grand Total
-                  </td>
-                  <td
-                    style={{
-                      padding: "0.75rem 1rem",
-                      textAlign: "right",
-                      color: "#ef4444",
-                      fontSize: "1rem",
-                      fontWeight: 800,
-                    }}
-                  >
-                    {formatCurrency(grandTotal)}
-                  </td>
-                  <td colSpan={2} />
-                </tr>
-              </tbody>
-            </table>
+                  {/* Grand total footer row */}
+                  <tr style={{ borderTop: "2px solid var(--border)", background: "var(--surface-muted)" }}>
+                    <td colSpan={2} style={{ fontWeight: 700, color: "var(--text-primary)" }}>
+                      Grand Total
+                    </td>
+                    <td style={{ textAlign: "right", color: "var(--danger)", fontSize: "1rem", fontWeight: 800 }}>
+                      {formatCurrency(grandTotal)}
+                    </td>
+                    <td colSpan={2} />
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
       )}
