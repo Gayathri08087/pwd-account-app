@@ -132,7 +132,7 @@ export default function Settings() {
         </div>
       )}
 
-      <div style={{ maxWidth: '100%', margin: '0 auto', background: 'var(--surface)', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--border)' }}>
+      <div style={{ width: '100%', maxWidth: '100%', margin: '0 auto', background: 'var(--surface)', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--border)' }}>
          <div style={{ padding: '32px', textAlign: 'center', borderBottom: '1px solid var(--border)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <img src={user?.photoURL || AVATAR_OPTIONS[0]} alt="Profile" style={{ width: '90px', height: '90px', borderRadius: '50%', marginBottom: '16px', objectFit: 'cover' }} />
             <h2 style={{ fontSize: '1.2rem', marginBottom: '8px', fontWeight: 800 }}>{user?.displayName || 'Student Profile'}</h2>
