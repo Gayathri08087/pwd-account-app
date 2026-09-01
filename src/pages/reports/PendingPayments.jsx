@@ -51,7 +51,6 @@ export default function PendingPayments() {
     <div className="page">
       <header className="page-header">
         <div>
-          <p className="eyebrow">Reports</p>
           <h1>Pending Payments</h1>
         </div>
         {grandTotal > 0 && (

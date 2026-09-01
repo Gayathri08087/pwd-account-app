@@ -243,7 +243,6 @@ export default function WorkManagement() {
     <div className="page">
       <header className="page-header">
         <div>
-          <p className="eyebrow">Work</p>
           <h1>Work Management</h1>
         </div>
       </header>

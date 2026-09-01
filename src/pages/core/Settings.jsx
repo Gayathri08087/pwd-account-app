@@ -20,7 +20,7 @@ const SettingsRow = ({ icon, label, onClick }) => (
   <div onClick={onClick} style={{ 
     display: 'flex', alignItems: 'center', padding: '16px 24px', 
     cursor: 'pointer', transition: 'background 0.2s', 
-    borderBottom: '1px solid var(--border-color)' 
+    borderBottom: '1px solid var(--border)' 
   }}>
     <span style={{ fontSize: '1.2rem', marginRight: '16px' }}>{icon}</span>
     <span style={{ flex: 1, fontWeight: 600, color: 'var(--text-primary)' }}>{label}</span>
@@ -132,8 +132,8 @@ export default function Settings() {
         </div>
       )}
 
-      <div style={{ maxWidth: '600px', margin: '0 auto', background: 'var(--bg-secondary)', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--border-color)' }}>
-         <div style={{ padding: '32px', textAlign: 'center', borderBottom: '1px solid var(--border-color)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div style={{ maxWidth: '600px', margin: '0 auto', background: 'var(--surface)', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--border)' }}>
+         <div style={{ padding: '32px', textAlign: 'center', borderBottom: '1px solid var(--border)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <img src={user?.photoURL || AVATAR_OPTIONS[0]} alt="Profile" style={{ width: '90px', height: '90px', borderRadius: '50%', marginBottom: '16px', objectFit: 'cover' }} />
             <h2 style={{ fontSize: '1.2rem', marginBottom: '8px', fontWeight: 800 }}>{user?.displayName || 'Student Profile'}</h2>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{user?.email}</p>
@@ -155,11 +155,11 @@ export default function Settings() {
           justifyContent: 'center', zIndex: 1000 
         }}>
           <div style={{ 
-            background: 'var(--bg-primary)', padding: '0', borderRadius: '16px', 
-            width: '90%', maxWidth: '450px', border: '1px solid var(--border-color)',
+            background: 'var(--surface-strong)', padding: '0', borderRadius: '16px', 
+            width: '90%', maxWidth: '450px', border: '1px solid var(--border)',
             overflow: 'hidden'
           }}>
-            <div style={{ padding: '20px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border-color)' }}>
+            <div style={{ padding: '20px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border)' }}>
               <h2 style={{ fontSize: '1.1rem', margin: 0 }}>Edit Profile Details</h2>
               <button onClick={() => setIsEditModalOpen(false)} style={{ background: 'transparent', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', fontSize: '1.2rem' }}>✕</button>
             </div>

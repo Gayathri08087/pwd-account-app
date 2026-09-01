@@ -199,7 +199,6 @@ export default function ProjectEstimation() {
     <div className="page">
       <header className="page-header">
         <div>
-          <p className="eyebrow">Projects</p>
           <h1>Project Estimation &amp; Payment Tracker</h1>
         </div>
       </header>
@@ -421,7 +420,6 @@ export default function ProjectEstimation() {
                 <article key={`${project.projectName}-${index}`} className="card project-card">
                   <div className="project-card-header">
                     <div>
-                      <span className="eyebrow">{displayDate(project.startDate)}</span>
                       <h2>{project.projectName}</h2>
                       {project.description && <p className="project-desc">{project.description}</p>}
                     </div>

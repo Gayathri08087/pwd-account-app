@@ -102,7 +102,6 @@ export default function Dashboard() {
 
       {/* Quick access nav cards */}
       <div>
-        <p className="eyebrow" style={{ marginBottom: 14 }}>Quick Access</p>
         <div className="dashboard-grid">
           {quickLinks.map((link) => (
             <Link key={link.to} to={link.to} className="card">

@@ -56,7 +56,6 @@ export default function MonthlyReport() {
     <div className="page">
       <header className="page-header">
         <div>
-          <p className="eyebrow">Reports</p>
           <h1>Monthly Report</h1>
         </div>
       </header>

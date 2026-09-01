@@ -35,7 +35,6 @@ export default function HomeExpense() {
     <div className="page">
       <header className="page-header">
         <div>
-          <p className="eyebrow">Personal</p>
           <h1>Own Expenses</h1>
         </div>
       </header>

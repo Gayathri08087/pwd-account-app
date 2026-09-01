@@ -14,7 +14,6 @@ export default function BalanceSheet() {
     <div className="page">
       <header className="page-header">
         <div>
-          <p className="eyebrow">Reports</p>
           <h1>Balance Sheet</h1>
         </div>
       </header>
