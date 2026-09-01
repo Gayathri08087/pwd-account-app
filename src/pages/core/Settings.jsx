@@ -18,15 +18,22 @@ const AVATAR_OPTIONS = [
 
 const SettingsRow = ({ icon, label, onClick }) => (
   <div onClick={onClick} style={{ 
-    display: 'flex', alignItems: 'center', padding: '16px 24px', 
+    display: 'flex', alignItems: 'center', padding: '20px 24px', 
     cursor: 'pointer', transition: 'background 0.2s', 
-    borderBottom: '1px solid var(--border)' 
+    borderBottom: '1px solid var(--border-soft)' 
   }}>
-    <span style={{ fontSize: '1.2rem', marginRight: '16px' }}>{icon}</span>
-    <span style={{ flex: 1, fontWeight: 600, color: 'var(--text-primary)' }}>{label}</span>
-    <span style={{ color: 'var(--text-secondary)' }}>&gt;</span>
+    <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px', marginRight: '16px' }}>{icon}</span>
+    <span style={{ flex: 1, fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary)' }}>{label}</span>
+    <span style={{ color: 'var(--text-secondary)', fontWeight: 300, fontSize: '1.2rem' }}>&gt;</span>
   </div>
 );
+
+// SVGs for the icons
+const UserIcon = <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: '100%', height: '100%' }}><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>;
+const LockIcon = <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-rose)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: '100%', height: '100%' }}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>;
+const MoonIcon = <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-amber)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: '100%', height: '100%' }}><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>;
+const SunIcon = <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-amber)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: '100%', height: '100%' }}><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>;
+const LogoutIcon = <svg viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: '100%', height: '100%' }}><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>;
 
 export default function Settings() {
   const { user, updateUserProfile, updateUserEmail, resetPassword, logout } = useAuthStore();
@@ -111,10 +118,9 @@ export default function Settings() {
   };
 
   return (
-    <div className="page">
-      <div className="page-header" style={{ display: 'flex', justifyContent: 'center' }}>
-        <h1 style={{ textAlign: 'center', width: '100%' }}>Profile Settings</h1>
-      </div>
+    <div className="page" style={{ alignItems: 'center' }}>
+      
+      {/* Remove the large "Profile Settings" h1 above the card to match Trakify's cleaner layout */}
 
       {message.text && (
         <div style={{
@@ -125,25 +131,44 @@ export default function Settings() {
           fontWeight: 600,
           fontSize: '0.85rem',
           marginBottom: '24px',
-          maxWidth: '100%',
+          width: '100%',
+          maxWidth: '700px',
           margin: '0 auto 24px auto'
         }}>
           {message.text}
         </div>
       )}
 
-      <div style={{ width: '100%', maxWidth: '100%', margin: '0 auto', background: 'var(--surface)', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--border)' }}>
-         <div style={{ padding: '32px', textAlign: 'center', borderBottom: '1px solid var(--border)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <img src={user?.photoURL || AVATAR_OPTIONS[0]} alt="Profile" style={{ width: '90px', height: '90px', borderRadius: '50%', marginBottom: '16px', objectFit: 'cover' }} />
-            <h2 style={{ fontSize: '1.2rem', marginBottom: '8px', fontWeight: 800 }}>{user?.displayName || 'Student Profile'}</h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{user?.email}</p>
+      {/* Main Settings Card */}
+      <div style={{ 
+        width: '100%', 
+        maxWidth: '750px', 
+        background: 'var(--surface)', 
+        borderRadius: '16px', 
+        overflow: 'hidden', 
+        border: '1px solid var(--border-soft)',
+        boxShadow: 'var(--shadow-card)'
+      }}>
+         
+         <div style={{ padding: '48px 32px 32px', textAlign: 'center', borderBottom: '1px solid var(--border-soft)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div style={{ 
+              width: '100px', height: '100px', borderRadius: '50%', marginBottom: '20px', 
+              background: 'var(--surface-muted)', border: '1px solid var(--border)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden'
+            }}>
+              <img src={user?.photoURL || AVATAR_OPTIONS[0]} alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
+            <h2 style={{ fontSize: '1.4rem', marginBottom: '8px', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em', maxWidth: '80%', lineHeight: '1.3' }}>
+              {user?.displayName || 'GAYATHRI R B.Tech. Computer Science and Engineering (C&IT)'}
+            </h2>
+            <p style={{ color: 'var(--accent-blue)', fontSize: '0.9rem', fontWeight: 500 }}>{user?.email || 'gayurajini2007@gmail.com'}</p>
          </div>
          
-         <div style={{ padding: '0' }}>
-            <SettingsRow icon="👤" label="Edit Profile Details" onClick={() => setIsEditModalOpen(true)} />
-            <SettingsRow icon="🔒" label="Change Password" onClick={handlePasswordReset} />
-            <SettingsRow icon={isDarkTheme ? "🌙" : "☀️"} label="Toggle Dark / Light Theme" onClick={handleThemeToggle} />
-            <SettingsRow icon="🚪" label="Log Out Session" onClick={logout} />
+         <div style={{ padding: '0', paddingBottom: '8px' }}>
+            <SettingsRow icon={UserIcon} label="Edit Profile Details" onClick={() => setIsEditModalOpen(true)} />
+            <SettingsRow icon={LockIcon} label="Change Password" onClick={handlePasswordReset} />
+            <SettingsRow icon={isDarkTheme ? MoonIcon : SunIcon} label="Toggle Dark / Light Theme" onClick={handleThemeToggle} />
+            <SettingsRow icon={LogoutIcon} label="Log Out Session" onClick={logout} />
          </div>
       </div>
 
@@ -152,16 +177,17 @@ export default function Settings() {
         <div style={{ 
           position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, 
           background: 'rgba(0,0,0,0.7)', display: 'flex', alignItems: 'center', 
-          justifyContent: 'center', zIndex: 1000 
+          justifyContent: 'center', zIndex: 1000,
+          padding: '20px'
         }}>
           <div style={{ 
             background: 'var(--surface-strong)', padding: '0', borderRadius: '16px', 
-            width: '90%', maxWidth: '450px', border: '1px solid var(--border)',
-            overflow: 'hidden'
+            width: '100%', maxWidth: '450px', border: '1px solid var(--border)',
+            overflow: 'hidden', boxShadow: 'var(--shadow-lg)'
           }}>
             <div style={{ padding: '20px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border)' }}>
               <h2 style={{ fontSize: '1.1rem', margin: 0 }}>Edit Profile Details</h2>
-              <button onClick={() => setIsEditModalOpen(false)} style={{ background: 'transparent', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', fontSize: '1.2rem' }}>✕</button>
+              <button onClick={() => setIsEditModalOpen(false)} style={{ background: 'transparent', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', fontSize: '1.2rem', padding: '4px' }}>✕</button>
             </div>
             
             <div style={{ padding: '24px' }}>
