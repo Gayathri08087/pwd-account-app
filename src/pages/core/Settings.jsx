@@ -166,7 +166,46 @@ export default function Settings() {
          <div style={{ padding: '0', paddingBottom: '8px' }}>
             <SettingsRow icon={UserIcon} label="Edit Profile Details" onClick={() => setIsEditModalOpen(true)} />
             <SettingsRow icon={LockIcon} label="Change Password" onClick={handlePasswordReset} />
-            <SettingsRow icon={isDarkTheme ? MoonIcon : SunIcon} label="Toggle Dark / Light Theme" onClick={handleThemeToggle} />
+            
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 24px', borderBottom: '1px solid var(--border-soft)' }}>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                 <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px', marginRight: '16px' }}>{isDarkTheme ? MoonIcon : SunIcon}</span>
+                 <span style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary)' }}>App Theme</span>
+              </div>
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                 <button 
+                    onClick={() => {
+                      setIsDarkTheme(false);
+                      document.body.classList.remove("dark-theme");
+                      localStorage.setItem("pwd_app_theme", "light");
+                    }}
+                    style={{ 
+                      padding: '6px 16px', borderRadius: '8px', 
+                      background: !isDarkTheme ? 'var(--accent-blue)' : 'var(--surface-muted)', 
+                      color: !isDarkTheme ? '#ffffff' : 'var(--text-secondary)', 
+                      border: '1px solid var(--border)', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 600,
+                      boxShadow: !isDarkTheme ? '0 2px 8px rgba(59,130,246,0.2)' : 'none'
+                    }}>
+                   Light
+                 </button>
+                 <button 
+                    onClick={() => {
+                      setIsDarkTheme(true);
+                      document.body.classList.add("dark-theme");
+                      localStorage.setItem("pwd_app_theme", "dark");
+                    }}
+                    style={{ 
+                      padding: '6px 16px', borderRadius: '8px', 
+                      background: isDarkTheme ? 'var(--accent-blue)' : 'var(--surface-muted)', 
+                      color: isDarkTheme ? '#ffffff' : 'var(--text-secondary)', 
+                      border: '1px solid var(--border)', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 600,
+                      boxShadow: isDarkTheme ? '0 2px 8px rgba(59,130,246,0.2)' : 'none'
+                    }}>
+                   Dark
+                 </button>
+              </div>
+            </div>
+
             <SettingsRow icon={LogoutIcon} label="Log Out Session" onClick={logout} />
          </div>
       </div>
