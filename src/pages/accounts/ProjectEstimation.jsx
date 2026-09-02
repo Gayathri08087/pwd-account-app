@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import useStore from "../../store/useStore";
 import { formatCurrency } from "../../utils/dataFormat";
 import ConfirmDialog from "../../components/ConfirmDialog";
+import { ClipboardList, Wallet, Landmark, Clock } from "lucide-react";
 
 const todayInputDate = () => new Date().toISOString().slice(0, 10);
 
@@ -206,13 +207,13 @@ export default function ProjectEstimation() {
       {/* Summary Cards */}
       <section className="stats-grid">
         <article className="card metric-card accent-card">
-          <span className="metric-card-icon">📋</span>
+          <span className="metric-card-icon" style={{ opacity: 0.15 }}><ClipboardList size={32} /></span>
           <h3>Total Estimation</h3>
           <strong>{formatCurrency(totals.totalEstimated)}</strong>
           <p>{projects.length} project{projects.length !== 1 ? "s" : ""} tracked</p>
         </article>
         <article className="card metric-card warning-card">
-          <span className="metric-card-icon">💸</span>
+          <span className="metric-card-icon" style={{ opacity: 0.15 }}><Wallet size={32} /></span>
           <h3>Total Expenditure</h3>
           <strong>{formatCurrency(totals.totalSpent)}</strong>
           <p>
@@ -222,13 +223,13 @@ export default function ProjectEstimation() {
           </p>
         </article>
         <article className="card metric-card success-card">
-          <span className="metric-card-icon">🏦</span>
+          <span className="metric-card-icon" style={{ opacity: 0.15 }}><Landmark size={32} /></span>
           <h3>Govt. Payment Received</h3>
           <strong>{formatCurrency(totals.totalReceived)}</strong>
           <p>{totals.receivedCount} fully received · {totals.partialCount} partial</p>
         </article>
         <article className="card metric-card danger-card">
-          <span className="metric-card-icon">⏳</span>
+          <span className="metric-card-icon" style={{ opacity: 0.15 }}><Clock size={32} /></span>
           <h3>Pending from Govt.</h3>
           <strong>{formatCurrency(totals.totalPending)}</strong>
           <p>{totals.pendingCount} project{totals.pendingCount !== 1 ? "s" : ""} awaiting payment</p>

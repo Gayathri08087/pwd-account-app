@@ -4,6 +4,7 @@ import SummaryCard from "../../components/SummaryCard";
 import Table from "../../components/Table";
 import { STORAGE_KEYS } from "../../utils/constants";
 import { calculateTotal, formatCurrency } from "../../utils/dataFormat";
+import { ClipboardList, CheckCircle2, Clock } from "lucide-react";
 
 const monthKey = (value) => {
   if (!value) return "No date";
@@ -61,9 +62,9 @@ export default function MonthlyReport() {
       </header>
 
       <section className="stats-grid">
-        <SummaryCard title="Work Total" amount={total} detail={`${records.length} records`} variant="accent" icon="📋" />
-        <SummaryCard title="Paid" amount={paid} detail="Auto-calculated" variant="success" icon="✅" />
-        <SummaryCard title="Remaining" amount={remaining} detail="Auto-calculated balance" variant="warning" icon="⏳" />
+        <SummaryCard title="Work Total" amount={total} detail={`${records.length} records`} variant="accent" icon={<ClipboardList size={24} />} />
+        <SummaryCard title="Paid" amount={paid} detail="Auto-calculated" variant="success" icon={<CheckCircle2 size={24} />} />
+        <SummaryCard title="Remaining" amount={remaining} detail="Auto-calculated balance" variant="warning" icon={<Clock size={24} />} />
       </section>
 
       <Table

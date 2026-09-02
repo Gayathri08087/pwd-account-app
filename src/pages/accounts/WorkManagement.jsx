@@ -3,6 +3,7 @@ import useStore from "../../store/useStore";
 import ConfirmDialog from "../../components/ConfirmDialog";
 import { STORAGE_KEYS } from "../../utils/constants";
 import { calculateTotal, formatCurrency } from "../../utils/dataFormat";
+import { Hammer, CheckCircle2, Clock } from "lucide-react";
 
 const todayInputDate = () => new Date().toISOString().slice(0, 10);
 
@@ -250,19 +251,19 @@ export default function WorkManagement() {
       {/* Summary cards */}
       <section className="stats-grid">
         <article className="card metric-card accent-card">
-          <span className="metric-card-icon">🔨</span>
+          <span className="metric-card-icon" style={{ opacity: 0.15 }}><Hammer size={32} /></span>
           <h3>Total Amount</h3>
           <strong>{formatCurrency(totals.totalAmount)}</strong>
           <p>{records.length} work record{records.length !== 1 ? "s" : ""}</p>
         </article>
         <article className="card metric-card success-card">
-          <span className="metric-card-icon">✅</span>
+          <span className="metric-card-icon" style={{ opacity: 0.15 }}><CheckCircle2 size={32} /></span>
           <h3>Paid Amount</h3>
           <strong>{formatCurrency(totals.paidAmount)}</strong>
           <p>Collected or paid so far</p>
         </article>
         <article className="card metric-card warning-card">
-          <span className="metric-card-icon">⏳</span>
+          <span className="metric-card-icon" style={{ opacity: 0.15 }}><Clock size={32} /></span>
           <h3>Remaining Amount</h3>
           <strong>{formatCurrency(totals.remainingAmount)}</strong>
           <p>{totals.remainingAmount === 0 ? "All records are fully paid" : "Amount still pending"}</p>

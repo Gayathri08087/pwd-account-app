@@ -2,6 +2,7 @@ import useStore from "../../store/useStore";
 import SummaryCard from "../../components/SummaryCard";
 import { STORAGE_KEYS } from "../../utils/constants";
 import { calculateTotal, formatCurrency } from "../../utils/dataFormat";
+import { ClipboardList, CheckCircle2, Clock } from "lucide-react";
 
 export default function BalanceSheet() {
   const [records] = useStore(STORAGE_KEYS.WORK_RECORDS, []);
@@ -19,9 +20,9 @@ export default function BalanceSheet() {
       </header>
 
       <section className="stats-grid">
-        <SummaryCard title="Total Work Amount" amount={total} detail={`${records.length} work records`} variant="accent" icon="📋" />
-        <SummaryCard title="Paid Amount" amount={paid} detail="Automatically calculated" variant="success" icon="✅" />
-        <SummaryCard title="Remaining Amount" amount={remaining} detail={formatCurrency(remaining)} variant="warning" icon="⏳" />
+        <SummaryCard title="Total Work Amount" amount={total} detail={`${records.length} work records`} variant="accent" icon={<ClipboardList size={24} />} />
+        <SummaryCard title="Paid Amount" amount={paid} detail="Automatically calculated" variant="success" icon={<CheckCircle2 size={24} />} />
+        <SummaryCard title="Remaining Amount" amount={remaining} detail={formatCurrency(remaining)} variant="warning" icon={<Clock size={24} />} />
       </section>
     </div>
   );
