@@ -1,7 +1,7 @@
 import useStore from "../../store/useStore";
 import { STORAGE_KEYS } from "../../utils/constants";
 import { formatCurrency } from "../../utils/dataFormat";
-import { Folder } from "lucide-react";
+import { Folder, PartyPopper } from "lucide-react";
 
 export default function PendingPayments() {
   const [records] = useStore(STORAGE_KEYS.WORK_RECORDS, []);
@@ -73,7 +73,7 @@ export default function PendingPayments() {
       </header>
 
       {pendingRows.length === 0 ? (
-        <p className="empty-state">🎉 All work records are fully paid. No pending payments!</p>
+        <p className="empty-state"><PartyPopper size={18} style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '6px' }} /> All work records are fully paid. No pending payments!</p>
       ) : (
         <section style={{ marginTop: "1rem" }}>
           <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", marginBottom: "0.75rem" }}>

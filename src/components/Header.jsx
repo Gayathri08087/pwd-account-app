@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAuthStore } from "../store/authStore";
+import { Calendar, Clock } from "lucide-react";
 
 const todayLabel = () =>
   new Date().toLocaleDateString("en-IN", {
@@ -24,8 +25,9 @@ export default function Header() {
         Public Works Department
       </p>
       <h2 style={{ fontSize: "1.2rem", marginBottom: "4px" }}>Welcome back, {user?.displayName?.split(' ')[0] || 'User'} 👋</h2>
-      <span className="welcome-date-badge" style={{ position: "relative", top: 0, right: 0, display: "inline-block", marginTop: "8px" }}>
-        📅 {todayLabel()} • ⏰ {currentTime.toLocaleTimeString("en-IN", { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+
+      <span className="welcome-date-badge" style={{ position: "relative", top: 0, right: 0, display: "inline-flex", alignItems: "center", gap: "8px", marginTop: "8px" }}>
+        <Calendar size={16} /> {todayLabel()} • <Clock size={16} /> {currentTime.toLocaleTimeString("en-IN", { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
       </span>
     </div>
   );
