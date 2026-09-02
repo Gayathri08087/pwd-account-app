@@ -3,48 +3,48 @@ import { Link } from "react-router-dom";
 import useStore from "../../store/useStore";
 import { STORAGE_KEYS } from "../../utils/constants";
 import { formatCurrency, calculateTotal } from "../../utils/dataFormat";
-
+import { ClipboardList, Hammer, Wallet, Scale, CalendarDays, Clock } from "lucide-react";
 
 
 const quickLinks = [
   {
     to: "/projects",
-    icon: "📋",
+    icon: <ClipboardList size={32} />,
     title: "Project Estimation",
     sub: "Track govt. projects & payments",
     color: "var(--accent-blue)",
   },
   {
     to: "/work",
-    icon: "🔨",
+    icon: <Hammer size={32} />,
     title: "Work Management",
     sub: "Materials, labour & billing",
     color: "var(--teal-500)",
   },
   {
     to: "/home",
-    icon: "💰",
+    icon: <Wallet size={32} />,
     title: "Own Expenses",
     sub: "Personal & household costs",
     color: "var(--accent-amber)",
   },
   {
     to: "/balance",
-    icon: "⚖️",
+    icon: <Scale size={32} />,
     title: "Balance Sheet",
     sub: "Work receivables summary",
     color: "var(--accent-green)",
   },
   {
     to: "/monthly",
-    icon: "📅",
+    icon: <CalendarDays size={32} />,
     title: "Monthly Report",
     sub: "Month-wise work breakdown",
     color: "var(--accent-rose)",
   },
   {
     to: "/pending",
-    icon: "⏳",
+    icon: <Clock size={32} />,
     title: "Pending Payments",
     sub: "Outstanding dues at a glance",
     color: "var(--accent-amber)",
@@ -72,28 +72,28 @@ export default function Dashboard() {
       {/* Summary metric cards */}
       <section className="stats-grid">
         <article className="card metric-card teal-card">
-          <span className="metric-card-icon">🔨</span>
+          <span className="metric-card-icon" style={{ opacity: 0.15 }}><Hammer size={32} /></span>
           <h3>Work Records</h3>
           <strong>{formatCurrency(workTotal)}</strong>
           <p>{workRecords.length} record{workRecords.length !== 1 ? "s" : ""} · {formatCurrency(workPaid)} paid</p>
         </article>
 
         <article className="card metric-card warning-card">
-          <span className="metric-card-icon">⏳</span>
+          <span className="metric-card-icon" style={{ opacity: 0.15 }}><Clock size={32} /></span>
           <h3>Work Pending</h3>
           <strong>{formatCurrency(workPending)}</strong>
           <p>{workRecords.filter((r) => Number(r.remainingAmount || 0) > 0).length} records still due</p>
         </article>
 
         <article className="card metric-card accent-card">
-          <span className="metric-card-icon">📋</span>
+          <span className="metric-card-icon" style={{ opacity: 0.15 }}><ClipboardList size={32} /></span>
           <h3>Project Estimation</h3>
           <strong>{formatCurrency(projTotal)}</strong>
           <p>{projects.length} project{projects.length !== 1 ? "s" : ""} · {projPending} pending govt. payment</p>
         </article>
 
         <article className="card metric-card success-card">
-          <span className="metric-card-icon">💰</span>
+          <span className="metric-card-icon" style={{ opacity: 0.15 }}><Wallet size={32} /></span>
           <h3>Own Expenses</h3>
           <strong>{formatCurrency(homeTotal)}</strong>
           <p>{homeExpenses.length} expense{homeExpenses.length !== 1 ? "s" : ""} logged</p>

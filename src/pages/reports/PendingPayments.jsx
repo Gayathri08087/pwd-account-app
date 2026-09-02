@@ -1,6 +1,7 @@
 import useStore from "../../store/useStore";
 import { STORAGE_KEYS } from "../../utils/constants";
 import { formatCurrency } from "../../utils/dataFormat";
+import { Folder } from "lucide-react";
 
 export default function PendingPayments() {
   const [records] = useStore(STORAGE_KEYS.WORK_RECORDS, []);
@@ -101,7 +102,7 @@ export default function PendingPayments() {
                     <tr key={idx}>
                       <td data-label="Project">
                         <span style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
-                          <span>📁</span>
+                          <span><Folder size={16} /></span>
                           {row.project}
                         </span>
                       </td>

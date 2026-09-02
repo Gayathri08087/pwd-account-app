@@ -18,14 +18,8 @@ export default function AppRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Dashboard /></PageTransition>} />
         <Route path="/projects" element={<PageTransition><ProjectEstimation /></PageTransition>} />
-        <Route path="/income" element={<PageTransition><ProjectEstimation /></PageTransition>} />
         <Route path="/work" element={<PageTransition><WorkManagement /></PageTransition>} />
-        <Route path="/work-expense" element={<Navigate to="/work" replace />} />
-        <Route path="/payments" element={<Navigate to="/work" replace />} />
-        <Route path="/materials" element={<Navigate to="/work" replace />} />
         <Route path="/home" element={<PageTransition><OwnExpenses /></PageTransition>} />
-        <Route path="/workers" element={<Navigate to="/" replace />} />
-        <Route path="/salary" element={<Navigate to="/" replace />} />
         <Route path="/balance" element={<PageTransition><BalanceSheet /></PageTransition>} />
         <Route path="/monthly" element={<PageTransition><MonthlyReport /></PageTransition>} />
         <Route path="/pending" element={<PageTransition><PendingPayments /></PageTransition>} />

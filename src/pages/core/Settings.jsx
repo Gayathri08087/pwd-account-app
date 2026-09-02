@@ -120,7 +120,6 @@ export default function Settings() {
   return (
     <div className="page" style={{ alignItems: 'center' }}>
       
-      {/* Remove the large "Profile Settings" h1 above the card to match Trakify's cleaner layout */}
 
       {message.text && (
         <div style={{
@@ -159,9 +158,9 @@ export default function Settings() {
               <img src={user?.photoURL || AVATAR_OPTIONS[0]} alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
             <h2 style={{ fontSize: '1.4rem', marginBottom: '8px', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em', maxWidth: '80%', lineHeight: '1.3' }}>
-              {user?.displayName || 'GAYATHRI R B.Tech. Computer Science and Engineering (C&IT)'}
+              {user?.displayName || 'User'}
             </h2>
-            <p style={{ color: 'var(--accent-blue)', fontSize: '0.9rem', fontWeight: 500 }}>{user?.email || 'gayurajini2007@gmail.com'}</p>
+            <p style={{ color: 'var(--accent-blue)', fontSize: '0.9rem', fontWeight: 500 }}>{user?.email || 'No email provided'}</p>
          </div>
          
          <div style={{ padding: '0', paddingBottom: '8px' }}>
@@ -222,10 +221,6 @@ export default function Settings() {
                 <div className="field">
                   <label>Email Address *</label>
                   <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required disabled={isUpdating} style={{ width: '100%' }} />
-                </div>
-                <div className="field">
-                  <label>Registration ID (Read-only)</label>
-                  <input type="text" value={user?.uid?.substring(0, 8).toUpperCase() || "E0224030"} readOnly disabled style={{ width: '100%', opacity: 0.7 }} />
                 </div>
                 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '16px' }}>

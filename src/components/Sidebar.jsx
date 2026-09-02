@@ -1,34 +1,35 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useAuthStore } from "../store/authStore";
+import { LayoutDashboard, ClipboardList, Hammer, Wallet, Scale, CalendarDays, Clock, Settings } from "lucide-react";
 
 const navGroups = [
   {
     title: "Overview",
     links: [
-      { to: "/", label: "Dashboard", icon: "📊" },
+      { to: "/", label: "Dashboard", icon: <LayoutDashboard size={20} /> },
     ],
   },
   {
     title: "Accounts",
     links: [
-      { to: "/projects", label: "Project Estimation", icon: "📋" },
-      { to: "/work", label: "Work Management", icon: "🔨" },
-      { to: "/home", label: "Own Expenses", icon: "💰" },
+      { to: "/projects", label: "Project Estimation", icon: <ClipboardList size={20} /> },
+      { to: "/work", label: "Work Management", icon: <Hammer size={20} /> },
+      { to: "/home", label: "Own Expenses", icon: <Wallet size={20} /> },
     ],
   },
   {
     title: "Reports",
     links: [
-      { to: "/balance", label: "Balance Sheet", icon: "⚖️" },
-      { to: "/monthly", label: "Monthly Report", icon: "📅" },
-      { to: "/pending", label: "Pending Payments", icon: "⏳" },
+      { to: "/balance", label: "Balance Sheet", icon: <Scale size={20} /> },
+      { to: "/monthly", label: "Monthly Report", icon: <CalendarDays size={20} /> },
+      { to: "/pending", label: "Pending Payments", icon: <Clock size={20} /> },
     ],
   },
   {
     title: "System",
     links: [
-      { to: "/settings", label: "Settings", icon: "⚙️" },
+      { to: "/settings", label: "Settings", icon: <Settings size={20} /> },
     ],
   },
 ];
