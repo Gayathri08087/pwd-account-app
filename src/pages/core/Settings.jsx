@@ -254,7 +254,7 @@ export default function Settings() {
 
               <form onSubmit={handleProfileSave} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 <div className="field">
-                  <label>Student Name *</label>
+                  <label>Username *</label>
                   <input type="text" value={name} onChange={(e) => setName(e.target.value)} required disabled={isUpdating} style={{ width: '100%' }} />
                 </div>
                 <div className="field">
